@@ -1,0 +1,3 @@
+[submodule "dist/web"]
+	path = dist/web
+	url = https://github.com/jsanchezamai/threejs-editor-engine.git
