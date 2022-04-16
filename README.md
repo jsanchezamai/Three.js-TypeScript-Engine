@@ -1,34 +1,26 @@
+# Three.js TypeScript Engine
+
+This project forks *Three.js TypeScript Boilerplate* to implement:
+
+https://github.com/DefinitelyTyped/DefinitelyTyped
+
+... bridging *Engine ES Mode* /tfs/nechi/threejs-editor-engine/README.md as:
+
+    - Editor
+    - Simulator
+
+
 # Three.js TypeScript Boilerplate
 
-This boilerplate is supplementary to my book titled **Three.js and TypeScript** (ASIN : B09GYTKRCH)
-
-<img style="float:left; min-width:150px;" src="./docs/threejs-typescript-250.jpg">
-
-&nbsp;<a href="https://www.amazon.com/dp/B09GYTKRCH"><img src="/docs/flag_us.gif">&nbsp; https://www.amazon.com/dp/B09GYTKRCH</a><br/>
-&nbsp;<a href="https://www.amazon.co.uk/dp/B09GYTKRCH"><img src="/docs/flag_uk.gif">&nbsp; https://www.amazon.co.uk/dp/B09GYTKRCH</a><br/>
-&nbsp;<a href="https://www.amazon.in/dp/B09GYTKRCH"><img src="/docs/flag_in.gif">&nbsp; https://www.amazon.in/dp/B09GYTKRCH</a><br/>
-&nbsp;<a href="https://www.amazon.de/dp/B09GYTKRCH"><img src="/docs/flag_de.gif">&nbsp; https://www.amazon.de/dp/B09GYTKRCH</a><br/>
-&nbsp;<a href="https://www.amazon.fr/dp/B09GYTKRCH"><img src="/docs/flag_fr.gif">&nbsp; https://www.amazon.fr/dp/B09GYTKRCH</a><br/>
-&nbsp;<a href="https://www.amazon.es/dp/B09GYTKRCH"><img src="/docs/flag_es.gif">&nbsp; https://www.amazon.es/dp/B09GYTKRCH</a><br/>
-&nbsp;<a href="https://www.amazon.it/dp/B09GYTKRCH"><img src="/docs/flag_it.gif">&nbsp; https://www.amazon.it/dp/B09GYTKRCH</a><br/>
-&nbsp;<a href="https://www.amazon.nl/dp/B09GYTKRCH"><img src="/docs/flag_nl.gif">&nbsp; https://www.amazon.nl/dp/B09GYTKRCH</a><br/>
-&nbsp;<a href="https://www.amazon.co.jp/dp/B09GYTKRCH"><img src="/docs/flag_jp.gif">&nbsp; https://www.amazon.co.jp/dp/B09GYTKRCH</a><br/>
-&nbsp;<a href="https://www.amazon.ca/dp/B09GYTKRCH"><img src="/docs/flag_ca.gif">&nbsp; https://www.amazon.ca/dp/B09GYTKRCH</a><br/>
-&nbsp;<a href="https://www.amazon.com.br/dp/B09GYTKRCH"><img src="/docs/flag_br.gif">&nbsp; https://www.amazon.com.br/dp/B09GYTKRCH</a><br/>
-&nbsp;<a href="https://www.amazon.com.mx/dp/B09GYTKRCH"><img src="/docs/flag_mx.gif">&nbsp; https://www.amazon.com.mx/dp/B09GYTKRCH</a><br/>
-&nbsp;<a href="https://www.amazon.com.au/dp/B09GYTKRCH"><img src="/docs/flag_au.gif">&nbsp; https://www.amazon.com.au/dp/B09GYTKRCH</a>
-
-and my **ThreeJS and TypeScript** courses at [Udemy](https://www.udemy.com/course/threejs-tutorials/?referralCode=4C7E1DE91C3E42F69D0F), [YouTube (Channel membership required)](https://www.youtube.com/playlist?list=PLKWUX7aMnlEKTmkBqwjc-tZgULJdNBjEd) and [Skillshare](https://skl.sh/2uxctEP)
-
-It is only just the beginning of what you will create.
-
-Course Discount Coupons : https://sbcode.net/coupons#threejs
+https://github.com/Sean-Bradley/Three.js-TypeScript-Boilerplate
 
 ## Boilerplate Overview
 
-When run, the boilerplate shows a green wireframe rotating cube, with OrbitControls included.
+When run, the boilerplate shows a blank screen, with OrbitControls included.
 
-[Example](https://sbcode.net/threejs/threejs-typescript-boilerplate/)
+[Example TTEngine](https://tfs/nechi/threejs-typescript-engine/)
+
+[Example TTBoilerplate](https://sbcode.net/threejs/threejs-typescript-boilerplate/)
 
 It uses webpack-dev-server for the development build, and NodeJS with Express for production build.
 
@@ -36,12 +28,17 @@ Both server and client projects are written in TypeScript.
 
 ![](docs/screengrab1.jpg)
 
+Engines are provided as i.e. threejs-editor-engine:pocs as in:
+
+- /tfs/nechi/threejs-editor-engine/pocs/gltf.engine.json
+- /tfs/nechi/threejs-editor-engine/pocs/mrtk.engine.json
+
 ## Installing
 
 1. Clone Repository
 
 ```bash
-git clone https://github.com/Sean-Bradley/Three.js-TypeScript-Boilerplate.git
+git clone https://tfs/nechi/Three.js-TypeScript-Engine.git
 ```
 
 2. CD into folder
