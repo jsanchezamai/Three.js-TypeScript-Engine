@@ -1,5 +1,10 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import { IWorker } from './engine-sdk';
+import { UnityEngine } from './unity-engine'
+
+const worker: IWorker = UnityEngine.getWorker();
+worker.ping();
 
 const scene = new THREE.Scene()
 

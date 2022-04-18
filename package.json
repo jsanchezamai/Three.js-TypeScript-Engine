@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "webpack --config ./src/www/engine/webpack.prod.js",
-    "build_base": "webpack --config ./src/www/client/webpack.prod.js",
+    "build": "webpack --config ./src/www/engine/webpack.dev.js",
+    "build_base": "webpack --config ./src/www/client/webpack.dev.js",
     "dev": "webpack serve --config ./src/www/client/webpack.dev.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./dist/server.js",
+    "start": "tsc && node ./dist/server.js",
     "build_server": "tsc",
-    "srv": "tsc && npm start"
+    "srv": "tsc && npm start",
+    "update": "git submodule update --remote"
   },
   "author": "tfs/nechi engine version forked from Sean Bradley",
   "license": "ISC",

@@ -9,6 +9,7 @@ const http_1 = __importDefault(require("http"));
 const port = 3001;
 class App {
     constructor(port) {
+        this.workers = [];
         this.port = port;
         const app = (0, express_1.default)();
         app.use(express_1.default.static(path_1.default.join(__dirname, 'web')));

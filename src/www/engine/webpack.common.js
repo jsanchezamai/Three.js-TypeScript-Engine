@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    entry: './src/www/engine/client.ts',
+    entry: ['./src/www/engine/client.ts'],
     module: {
         rules: [
             {
@@ -15,7 +15,7 @@ module.exports = {
         alias: {
             three: path.resolve('./node_modules/three')
         },
-        extensions: ['.tsx', '.ts', '.js'],
+        extensions: ['.tsx', '.ts', '.js', '.d.ts']
     },
     output: {
         filename: 'bundle.js',

@@ -1,12 +1,14 @@
 import express from 'express'
 import path from 'path'
 import http from 'http'
-
+import { IEngine } from '../www/engine/engine-sdk'
 const port: number = 3001
 
 class App {
     private server: http.Server
     private port: number
+
+    workers: Array<IEngine> = [];
 
     constructor(port: number) {
         this.port = port
