@@ -4,19 +4,35 @@
 import * as THREE from "three";
 import { BoxGeometry, MeshNormalMaterial, Object3D } from "three";
 
+export interface IEditor {
+    signals: {[key: string]: signals.Signal<any>}
+}
+
+export interface EWindow extends Window {
+    editor: IEditor;
+    engineWorker: IUnityEngine
+}
+
+
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 export enum Signals {
     SYNC,
-    ACK
+    ACK,
+    IMPORT_CONTROL_LIBRARY,
+    IMPORTED_CONTROL_LIBRARY
 }
 
 export interface ISignal {
-
+    _bindings: any,
+    _prevParams: any,
+    dispatch: any,
+    add: (param?: any) => void
 }
 
 export interface IMessage {
-    text: string;
-    signal: ISignal;
+    text?: string;
+    signal: Signals;
+    params?: any
 }
 
 export interface IWorker {
@@ -28,13 +44,15 @@ export interface IWorker {
 export interface IEngine {
     TAG: string;
 
+    dom: IInteractable[];
+
     import(): boolean;
 
     export(): boolean;
 
 }
 
-export interface IUnityEngine extends IWorker, IEngine{
+export interface IUnityEngine extends IWorker, IEngine {
 
 }
 
@@ -71,9 +89,9 @@ export interface IInteractableProfileItem {
 
 export interface IInteractable {
     BoxCollider: THREE.Object3D, // Box Collider for the button's front plate.
-    PressableButton: IPressableButton, //  The logic for the button movement with hand press interaction.
+    // PressableButton: IPressableButton, //  The logic for the button movement with hand press interaction.
     PhysicalPressEventRouter: any, //  This script sends events from hand press interaction to Interactable.
-    Interactable: IInteractable, //  Interactable handles various types of interaction states and events. HoloLens gaze, gesture, and voice input and immersive headset motion controller input are directly handled by this script.
+    // Interactable: IInteractable, //  Interactable handles various types of interaction states and events. HoloLens gaze, gesture, and voice input and immersive headset motion controller input are directly handled by this script.
     AudioSource: any, //  Unity audio source for the audio feedback clips.
 }
 
@@ -94,9 +112,7 @@ export interface IPressableButton extends IInteractable {
 
 export class PressableButton implements IPressableButton {
     BoxCollider: Object3D;
-    PressableButton: IPressableButton;
     PhysicalPressEventRouter: any;
-    Interactable: IInteractable;
     AudioSource: any;
 
     constructor() {
@@ -105,9 +121,6 @@ export class PressableButton implements IPressableButton {
 
         const mesh = new THREE.Mesh( geometry, material );
         this.BoxCollider = mesh;
-
-        this.PressableButton = this;
-        this.Interactable = this;
     }
 
 }

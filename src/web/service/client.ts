@@ -1,9 +1,8 @@
-import { IUnityEngine } from "../engine/engine-sdk";
+import { EWindow } from "../engine/engine-sdk";
 import { UnityEngine } from "./engine-worker";
 
-console.log("Started the service cliente");
+declare let window: EWindow;
 
-const worker: IUnityEngine = UnityEngine.getWorker();
-worker.ping();
-worker.import();
-console.log(worker);
+console.log("[Core] Service client script!");
+window.engineWorker = UnityEngine.get();
+window.engineWorker.ping();
