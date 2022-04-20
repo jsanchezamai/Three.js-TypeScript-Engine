@@ -1,7 +1,7 @@
 import express from 'express'
 import path from 'path'
 import http from 'http'
-import { IEngine } from '../www/engine/engine-sdk'
+import { IEngine } from '../web/engine/engine-sdk'
 const port: number = 3001
 
 class App {
@@ -13,7 +13,14 @@ class App {
     constructor(port: number) {
         this.port = port
         const app = express()
-        app.use(express.static(path.join(__dirname, 'web')))
+        app.use(express.static(path.join(__dirname, '../web')))
+        /*console.log("Start script server from", import.meta.url);
+
+        const path = import.meta.url.split("/");
+        path.pop();
+        const url = new URL('../dist/web', path.join('/'));
+        console.log(url);
+        app.use(express.static(url.pathname))*/
         // In the webpack version of the boilerplate, it is not necessary
         // to add static references to the libs in node_modules if
         // you are using module specifiers in your client.ts imports.

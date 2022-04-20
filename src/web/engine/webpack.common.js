@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    entry: ['./src/www/engine/client.ts'],
+    entry: ['./src/web/engine/client.ts'],
     module: {
         rules: [
             {
@@ -9,6 +9,13 @@ module.exports = {
                 use: 'ts-loader',
                 exclude: /node_modules/,
             },
+            {
+                test: /\.worker.js$/i,
+                exclude: /node_modules/,
+                use: [
+                  'worker-loader'
+                ]
+            }
         ],
     },
     resolve: {
@@ -19,6 +26,6 @@ module.exports = {
     },
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, '../../../dist/web/engine'),
+        path: path.resolve(__dirname, '../../../dist/web/editor/engine'),
     }
 };

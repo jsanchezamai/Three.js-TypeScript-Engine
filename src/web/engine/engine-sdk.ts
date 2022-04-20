@@ -1,8 +1,10 @@
 // Type definitions for engine 0.1
 // Project: https://tfs/nechi/Three.js-TypeScript-Engine/src/typings/engine/index.d.ts
+
+import * as THREE from "three";
+import { BoxGeometry, MeshNormalMaterial, Object3D } from "three";
+
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
-
-
 export enum Signals {
     SYNC,
     ACK
@@ -32,7 +34,7 @@ export interface IEngine {
 
 }
 
-export interface IUnityEngine {
+export interface IUnityEngine extends IWorker, IEngine{
 
 }
 
@@ -68,10 +70,10 @@ export interface IInteractableProfileItem {
 }
 
 export interface IInteractable {
-    BoxCollider: any, // Box Collider for the button's front plate.
-    PressableButton: any, //  The logic for the button movement with hand press interaction.
+    BoxCollider: THREE.Object3D, // Box Collider for the button's front plate.
+    PressableButton: IPressableButton, //  The logic for the button movement with hand press interaction.
     PhysicalPressEventRouter: any, //  This script sends events from hand press interaction to Interactable.
-    Interactable: any, //  Interactable handles various types of interaction states and events. HoloLens gaze, gesture, and voice input and immersive headset motion controller input are directly handled by this script.
+    Interactable: IInteractable, //  Interactable handles various types of interaction states and events. HoloLens gaze, gesture, and voice input and immersive headset motion controller input are directly handled by this script.
     AudioSource: any, //  Unity audio source for the audio feedback clips.
 }
 
@@ -87,6 +89,26 @@ export enum InteractableEvents {
 }
 
 export interface IPressableButton extends IInteractable {
+
+}
+
+export class PressableButton implements IPressableButton {
+    BoxCollider: Object3D;
+    PressableButton: IPressableButton;
+    PhysicalPressEventRouter: any;
+    Interactable: IInteractable;
+    AudioSource: any;
+
+    constructor() {
+        const geometry = new BoxGeometry( 0.2, 0.2, 0.2 );
+        const material = new MeshNormalMaterial();
+
+        const mesh = new THREE.Mesh( geometry, material );
+        this.BoxCollider = mesh;
+
+        this.PressableButton = this;
+        this.Interactable = this;
+    }
 
 }
 
@@ -114,3 +136,7 @@ export enum SldierEvents {
     OnHoverEntered,             // Called when the user's hand / controller hovers over the slider, using either near or far interaction.
     OnHoverExited,          // Called when the user's hand / controller is no longer near the
 }
+
+export const DUMMY_LIBRARY : IInteractable[] =  [
+    new PressableButton()
+]
