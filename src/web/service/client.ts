@@ -4,5 +4,9 @@ import { UnityEngine } from "./engine-worker";
 declare let window: EWindow;
 
 console.log("[Core] Service client script!");
-window.engineWorker = UnityEngine.get();
-window.engineWorker.ping();
+
+const ew = UnityEngine.get();
+window.engineWorker = ew;
+ew.ping(50000);
+
+ew.init();

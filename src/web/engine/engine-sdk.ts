@@ -19,7 +19,9 @@ export enum Signals {
     SYNC,
     ACK,
     IMPORT_CONTROL_LIBRARY,
-    IMPORTED_CONTROL_LIBRARY
+    IMPORTED_CONTROL_LIBRARY,
+    EXPORT_CONTROL_LIBRARY,
+    EXPORTED_CONTROL_LIBRARY
 }
 
 export interface ISignal {
@@ -38,7 +40,7 @@ export interface IMessage {
 export interface IWorker {
     TAG: string;
 
-    ping(): void;
+    ping(timems: number): void;
 }
 
 export interface IEngine {
@@ -46,10 +48,21 @@ export interface IEngine {
 
     dom: IInteractable[];
 
-    import(): boolean;
+    import(path_to_gltf_asset?: string): boolean;
 
-    export(): boolean;
+    import(path_to_gltf_asset?: string): Promise<boolean>;
 
+    export(dom: IInteractable[]): boolean;
+
+}
+
+export interface IEditorITeractable {
+    animations: Array<THREE.AnimationClip>,
+    scene: THREE.Group,
+    scenes: Array<THREE.Group>,
+    cameras: Array<THREE.Camera>,
+    asset: Object,
+    extension?: IInteractable[]
 }
 
 export interface IUnityEngine extends IWorker, IEngine {
