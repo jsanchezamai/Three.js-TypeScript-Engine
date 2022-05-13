@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "build": "webpack --config ./src/web/engine/webpack.prod.js",
-    "buildw": "webpack --config ./src/web/service/webpack.dev.js",
+    "buildw": "webpack --config ./src/web/service/webpack.prod.js",
     "build_base": "webpack --config ./src/web/client/webpack.dev.js",
     "dev": "webpack serve --config ./src/web/client/webpack.dev.js",
     "test": "echo \"Error: no test specified\" && exit 1",

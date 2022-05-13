@@ -1,7 +1,24 @@
 import * as signals from "signals";
-import { DUMMY_LIBRARY, EWindow, IEngine, IInteractable, IMessage, IUnityEngine, IWorker, Signals } from "../engine/engine-sdk";
+import { DUMMY_LIBRARY, EWindow, IInteractable, IMessage, IUnityEngine, Signals } from "../engine/engine-sdk";
+import { Handler } from "./worker";
 
 declare let window: EWindow;
+
+export interface IEvent { data: IMessage }
+
+export class Worker {
+    worker: Handler;
+    constructor(url: String | URL) {
+        this.worker = new Handler();
+    }
+    addEventListener(message: string, callback: (event: IEvent) => void) {
+        
+    }
+    postMessage(message: IMessage) {
+        this.worker.onmessage({ data: message });
+    }
+}
+const wspath = '';
 
 export class UnityEngine extends Worker implements IUnityEngine {
 
@@ -14,6 +31,7 @@ export class UnityEngine extends Worker implements IUnityEngine {
 
         if (this.instance == null) {
             this.instance = new UnityEngine();
+            console.log("New wbWorker Instance");
             this.wbWorker = new Worker(new URL('./worker.ts', import.meta.url))
         }
 
@@ -23,7 +41,8 @@ export class UnityEngine extends Worker implements IUnityEngine {
     TAG: string = "UnityEngine";
 
     constructor() {
-        super('../service/src_web_service_engine-worker_ts-src_web_service_worker_ts.engine-worker.js');
+        super(wspath);
+        console.log("New wbWorker Instance", wspath);
         console.log("Created", this.TAG);
     }
 
@@ -36,7 +55,7 @@ export class UnityEngine extends Worker implements IUnityEngine {
             this.dom = data;
         })
 
-        UnityEngine.wbWorker.addEventListener("message", (event) => {
+        UnityEngine.wbWorker.addEventListener("message", (event: IEvent) => {
 
             console.log("[Core]", this.TAG, "addEventListener", event.data);
             switch(event.data.signal) {
@@ -76,16 +95,16 @@ export class UnityEngine extends Worker implements IUnityEngine {
     }
 
     ping() {
-
+        console.log('call ping')
         setInterval(() => {
             const message: IMessage = {
                 signal: Signals.SYNC,
                 text: "SYNC"
             }
-
+            console.log("Send from UI...", message);
             UnityEngine.wbWorker.postMessage(message);
 
-        }, 50000);
+        }, 1000);
     }
 
 }
